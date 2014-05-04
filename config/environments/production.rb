@@ -1,4 +1,7 @@
 Druthers::Application.configure do
+  # Force the app to use SSL in production
+  config.force_ssl = true
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
