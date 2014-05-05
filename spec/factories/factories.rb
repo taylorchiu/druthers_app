@@ -7,8 +7,8 @@ FactoryGirl.define do
 
   factory :user do
   	email
-  	password_digest "password"
-  	remember_token "remember_token"
+  	password "password"
+  	password_confirmation "password"
     name "Jackie"
   end
 
