@@ -7,31 +7,10 @@ Druthers::Application.routes.draw do
   root 'users#new'
 
   resources :users
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
+  resources :polls
+  resources :guests, only: [:new, :create]
  
 end
-
 
 #    Prefix Verb   URI Pattern               Controller#Action
 #      root GET    /                         users#new
@@ -43,3 +22,13 @@ end
 #           PATCH  /users/:id(.:format)      users#update
 #           PUT    /users/:id(.:format)      users#update
 #           DELETE /users/:id(.:format)      users#destroy
+#     polls GET    /polls(.:format)          polls#index
+#           POST   /polls(.:format)          polls#create
+#  new_poll GET    /polls/new(.:format)      polls#new
+# edit_poll GET    /polls/:id/edit(.:format) polls#edit
+#      poll GET    /polls/:id(.:format)      polls#show
+#           PATCH  /polls/:id(.:format)      polls#update
+#           PUT    /polls/:id(.:format)      polls#update
+#           DELETE /polls/:id(.:format)      polls#destroy
+#    guests POST   /guests(.:format)         guests#create
+# new_guest GET    /guests/new(.:format)     guests#new
