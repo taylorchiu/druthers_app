@@ -1,5 +1,3 @@
-# Forgot to add --no-test-framework when I created this model (oops)
-
 class CreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
