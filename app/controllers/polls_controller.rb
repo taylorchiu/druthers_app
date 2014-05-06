@@ -36,7 +36,7 @@ class PollsController < ApplicationController
 	private
 		def poll_params
 			# did not permit :url bc that shouldn't be changeable by the user
-			params.require(:poll).permit(:name :start_date :end_date :book_list :winning_book)
+			params.require(:poll).permit(:name, :start_date, :end_date, :book_list, :winning_book)
 		end
 
 end

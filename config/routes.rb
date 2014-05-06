@@ -4,11 +4,15 @@ Druthers::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  root 'users#new'
+  root 'home#index'
 
-  resources :users
+  resources :users, except: [:index, :show]
   resources :polls
   resources :guests, only: [:new, :create]
+
+  get '/signup', to: 'users#new'
+  delete '/signout', to: 'sessions#destroy'
+  get'/signin', to: 'sessions#new'
  
 end
 
