@@ -1,0 +1,12 @@
+
+<!-- this page is only needed if a user can have multiple polls...not currently set up for this -->
+
+<% @polls.each do |poll| %>
+  <div class="row">
+     <div class="col-md-4 col-sm-4">
+      <p class="lead"><%= link_to(poll.name, poll.url) %>
+      <p><%= poll.start_date %>
+      <p><%= poll.end_date %><
+    </div>
+  </div>
+<% end %>

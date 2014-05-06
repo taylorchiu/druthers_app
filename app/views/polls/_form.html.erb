@@ -1,0 +1,14 @@
+<%= form_for @poll do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, :autofocus => true %>
+  <br>
+  <%= f.label :start_date %>
+  <%= f.text_field :start_date %>
+  <br>
+  <%= f.label :end_date %>
+  <%= f.text_field :end_date %>
+  <br>
+<%= f.submit  class: "btn btn-primary" %>
+<% end %>
+
+Some books will be displayed here...
