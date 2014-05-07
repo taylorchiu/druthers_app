@@ -12,9 +12,11 @@ class PollsController < ApplicationController
 			i = 0
 			while i <= 10 do
 				book = data['GoodreadsResponse']['search']['results']['work'][i]
-				@goodreads_data << {title: book['best_book']['title']}
+				@goodreads_data << {title: book['best_book']['title'], author: book['best_book']['author']['name'], book_id: book['best_book']['id'] }
 				i += 1
 			end
+			 @goodreads_data
+			# @book_id = @goodreads_data[:book_id].to_i
 	end
 
 
@@ -23,6 +25,7 @@ class PollsController < ApplicationController
 		# 	{title: book['best_book']['title'].titleize, author: book['best_book']['author']['name'], img_url: book['best_book']['img_url']}
 
   def details
+  	results = Typhoeus.get("https://www.goodreads.com/search.xml?key=#{ENV['GOODREADS_KEY']}&q=#{params[:book_id]}")
   end
 
 	def index

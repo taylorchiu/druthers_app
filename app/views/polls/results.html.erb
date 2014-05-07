@@ -1,8 +1,7 @@
 <h1>Your book search results should go here!</h1>
-<%= @goodreads_data %>
 
 <% @goodreads_data.each do |book| %>
-<%= link_to book[:title], polls_details_path %><br>
+<%= link_to book[:title] + ', by ' + book[:author], polls_details_path(book[:book_id]) %><br>
 <% end %>
 
 <%= link_to 'Search Again', polls_search_path %>
