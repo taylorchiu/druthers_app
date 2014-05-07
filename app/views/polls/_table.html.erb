@@ -1,0 +1,24 @@
+<div class="table_body">
+	<table class="table table-striped table-bordered table-condensed">
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Author</th>
+				<th>Add to Poll</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @goodreads_data.each do |book| %>
+			<tr>
+				<td><%= link_to book[:title], polls_details_path(book[:book_id]) %></td>
+				<td><%= link_to book[:author], polls_details_path(book[:book_id]) %></td>
+
+				<!-- ADD button needs to save to database, currently only link to start new poll -->
+				<td><%= link_to "add", new_poll_path, :class => "btn btn-primary btn-xs" %></td>
+				<td><%= link_to "delete", @poll, method: :delete, data: { confirm: "You sure?" } , :class => "btn btn-danger btn-xs" %></td>
+				</tr>
+				<% end %>
+		</tbody>
+	</table>
+</div>

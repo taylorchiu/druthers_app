@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	def new
+  def new
 		@user = User.new
 	end
 
@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = "Welcome to Druthers, the Book Voting App!"
       sign_in @user
-      redirect_to user_path(@user)
+      redirect_to polls_search_path
     else
       flash[:error] = "Failed to create account.  Try again."
       redirect_to new_user_path

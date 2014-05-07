@@ -5,7 +5,7 @@ class GuestsController < ApplicationController
 
 	def create
 		@guest = Guest.create(guest_params)
-		redirect_to guest_path
+		redirect_to poll_path(@guest.poll_id)
 	end
 
 	private
