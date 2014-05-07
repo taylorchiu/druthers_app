@@ -1,4 +1,6 @@
-<h1>Your Poll:</h1>
+<h1>New Poll page - should display all books added to poll and a form to add details</h1>
+
+
 
 	<strong>Name: </strong><%= @poll.name %><br>
 
@@ -7,3 +9,10 @@
 	<strong>Closes On: </strong><%= @poll.end_date %><br>
 
 	<strong>Unique URL: </strong><%= @poll.url %><br>
+
+	<%= form_tag("/guests/new", method: "get") do %>
+	  <%= submit_tag("Vote Now") %>
+<% end %>
+
+
+<h2> Buttons for FINISH, BACK, ADD MORE </h2>
