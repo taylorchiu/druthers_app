@@ -1,15 +1,14 @@
-<h1>Book Details page</h1>
-<h2>this should show the reviews string that will be put into an iframe to display the results</h2>
+<h1>Book Details</h1>
 
 <br>
 
 <div class="details">
-	<p><%= @img_url %></p>
+	<p><img src="<%= @img_url %>"/></p>
 	<p><strong>Title: </strong><%= @title %></p>
 	<p><strong>Author: </strong><%= @author %></p>
 	<p><strong>Goodreads ID: </strong> <%= @book_id %></p>
-	<p><strong>Thing that should become an iframe: </strong> <br>
-		 <%= @reviews %> </p>
+	<p><strong>Average Rating on Goodreads:</strong> <%= @avg_rating %>
+	<p><strong>Link:</strong> <%= link_to @link, link_path(@link) %> </p>
 </div>
 
 <%= form_for @book do |f| %>
@@ -20,7 +19,8 @@
 	<%= f.hidden_field :book_id, :value => @book_id %>
  
  <!-- this isn't passing the id into the destination url! -->
-<%= button_to "save", save_book_path(@book_id), :method => :post, :class => "btn btn-primary btn-xs" %>
+ <%= button_to "save", save_book_path(@book_id), :method => :post, :class => "btn btn-primary btn-xs" %>
+
 <% end %>
 
 

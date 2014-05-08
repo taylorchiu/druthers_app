@@ -6,9 +6,13 @@ class BooksController < ApplicationController
 		# user searches by title, which gets sent to the API via Typhoeus.get and saved in an array, @goodreads_data
   	# the while loop iterates through the giant API response and saves just the title, author, and book_id to the @goodreads_data 
   	#instance variable, which we call in the results.html.erb view to display the search results.
-		@search_title = params[:title]
-		@search_title = @search_title.gsub(" ", "%20")
-		results = Typhoeus.get("https://www.goodreads.com/search.xml?key=#{ENV['GOODREADS_KEY']}&q=#{@search_title}")
+		if params[:title] == nil
+			@search = params[:author]
+		else
+			@search = params[:title]
+		end
+		search_terms = @search.gsub(" ", "%20")
+		results = Typhoeus.get("https://www.goodreads.com/search.xml?key=#{ENV['GOODREADS_KEY']}&q=#{@search}")
 		data = Hash.from_xml(results.response_body)
 		@goodreads_data = []
 			i = 0
@@ -27,8 +31,15 @@ class BooksController < ApplicationController
   	@author = data['GoodreadsResponse']['book']['authors']['author'][0]['name']
   	@img_url = data['GoodreadsResponse']['book']['image_url']
   	@book_id = data['GoodreadsResponse']['book']['id']
-  	@reviews = data['GoodreadsResponse']['book']['reviews_widget']
+  	@avg_rating = data['GoodreadsResponse']['book']['average_rating']
+  	@link = 'https://www.goodreads.com/book/title/' + @title.gsub(" ", "+")
   	@book = Book.new
+  end
+
+  def link
+  	@book = Book.find_by link: params[:link]
+  	link = @book['link']
+  	redirect_to link
   end
 
 	def new
