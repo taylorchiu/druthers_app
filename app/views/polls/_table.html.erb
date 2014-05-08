@@ -4,7 +4,7 @@
 			<tr>
 				<th>Title</th>
 				<th>Author</th>
-				<th>Add to Poll</th>
+				<th>Save Book</th>
 				<th>Delete</th>
 			</tr>
 		</thead>
@@ -14,8 +14,8 @@
 				<td><%= link_to book[:title], polls_details_path(book[:book_id]) %></td>
 				<td><%= link_to book[:author], polls_details_path(book[:book_id]) %></td>
 
-				<!-- ADD button needs to save to database, currently only link to start new poll -->
-				<td><%= link_to "add", new_poll_path, :class => "btn btn-primary btn-xs" %></td>
+				<!-- Remove these buttons, put on details page. Make them save to database (Book.create)-->
+				<td><%= link_to "save", new_book_path, :class => "btn btn-primary btn-xs" %></td>
 				<td><%= link_to "delete", @poll, method: :delete, data: { confirm: "You sure?" } , :class => "btn btn-danger btn-xs" %></td>
 				</tr>
 				<% end %>

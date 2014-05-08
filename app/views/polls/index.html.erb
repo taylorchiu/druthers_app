@@ -1,12 +1,14 @@
 
-<!-- this page is only needed if a user can have multiple polls...not currently set up for this -->
+<h1>All Polls </h1>
+
+<%= link_to "Create Poll", new_poll_path %>
+
+<br>
 
 <% @polls.each do |poll| %>
   <div class="row">
      <div class="col-md-4 col-sm-4">
-      <p class="lead"><%= link_to(poll.name, poll.url) %>
-      <p><%= poll.start_date %>
-      <p><%= poll.end_date %><
+      <p class="lead"><%= link_to poll.name, poll_path(poll) %>
     </div>
   </div>
 <% end %>

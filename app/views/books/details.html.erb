@@ -1,0 +1,30 @@
+<h1>Book Details page</h1>
+<h2>this should show the reviews string that will be put into an iframe to display the results</h2>
+
+<br>
+
+<div class="details">
+	<p><%= @img_url %></p>
+	<p><strong>Title: </strong><%= @title %></p>
+	<p><strong>Author: </strong><%= @author %></p>
+	<p><strong>Goodreads ID: </strong> <%= @book_id %></p>
+	<p><strong>Thing that should become an iframe: </strong> <br>
+		 <%= @reviews %> </p>
+</div>
+
+<%= form_for @book do |f| %>
+	<%= f.hidden_field :title, :value => @title %>
+	<%= f.hidden_field :author, :value => @author %>
+	<%= f.hidden_field :img_url, :value => @img_url %>
+	<%= f.hidden_field :reviews, :value => @reviews %>
+	<%= f.hidden_field :book_id, :value => @book_id %>
+ 
+ <!-- this isn't passing the id into the destination url! -->
+<%= button_to "save", save_book_path(@book_id), :method => :post, :class => "btn btn-primary btn-xs" %>
+<% end %>
+
+
+<%= link_to "View all Saved Books", books_path %>
+<br>
+
+<%= link_to "Search Books", books_search_path %>

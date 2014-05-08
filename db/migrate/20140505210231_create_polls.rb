@@ -3,8 +3,8 @@ class CreatePolls < ActiveRecord::Migration
     create_table :polls do |t|
       t.string :name
       t.string :url
-      t.string :start_date
-      t.string :end_date
+      t.datetime :start_date
+      t.datetime :end_date
       t.string :book_list
       t.string :winning_book
       t.references :user, index: true

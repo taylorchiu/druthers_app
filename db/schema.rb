@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140506013959) do
+ActiveRecord::Schema.define(version: 20140507230550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "books", force: true do |t|
+    t.integer  "poll_id"
+    t.string   "title"
+    t.string   "author"
+    t.string   "img_url"
+    t.text     "reviews"
+    t.string   "book_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "books", ["poll_id"], name: "index_books_on_poll_id", using: :btree
 
   create_table "guests", force: true do |t|
     t.string   "name"
@@ -26,8 +39,8 @@ ActiveRecord::Schema.define(version: 20140506013959) do
   create_table "polls", force: true do |t|
     t.string   "name"
     t.string   "url"
-    t.string   "start_date"
-    t.string   "end_date"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.text     "book_list"
     t.string   "winning_book"
     t.integer  "user_id"
