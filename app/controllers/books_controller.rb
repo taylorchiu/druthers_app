@@ -14,17 +14,17 @@ class BooksController < ApplicationController
 		@search = @search.gsub(" ", "%20")
 		results = Typhoeus.get("https://www.goodreads.com/search.xml?key=#{ENV['GOODREADS_KEY']}&q=#{@search}")
 		data = Hash.from_xml(results.response_body)
-		@goodreads_data = []
+  	if data['GoodreadsResponse']['search']['results_end'].to_i == 0
+  		return redirect_to(error_path)
+  	else
+			@goodreads_data = []
 			i = 0
 			while i <= 10 do
 				book = data['GoodreadsResponse']['search']['results']['work'][i]
-				if book == nil
-					return redirect_to(error_path)
-				else
 				@goodreads_data << {title: book['best_book']['title'], author: book['best_book']['author']['name'], book_id: book['best_book']['id'] }
 				i += 1
-				end
 			end
+		end
 	end
 
 	def details
