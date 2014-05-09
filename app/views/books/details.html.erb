@@ -1,29 +1,35 @@
 <h1>Book Details</h1>
 
 <br>
+<div class="book_image">
+	<p><img src="<%= @img_url %>"/></p>
+</div>
 
 <div class="details">
-	<p><img src="<%= @img_url %>"/></p>
-	<p><strong>Title: </strong><%= @title %></p>
-	<p><strong>Author: </strong><%= @author %></p>
-	<p><strong>Goodreads ID: </strong> <%= @book_id %></p>
-	<p><strong>Average Rating on Goodreads:</strong> <%= @avg_rating %>
+	<p><div class="details_title"><strong>Title: </strong></div><%= @title %></p>
+	<p><div class="details_title"><strong>Author: </strong></div><%= @author %></p>
+	<p><div class="details_title"><strong>Goodreads ID: </strong></div><%= @book_id %></p>
+	<p><div class="details_title"><strong>Average Rating on Goodreads:</strong></div><%= @avg_rating %>
+	<br>
+	<p><iframe src="<%= @link %>"><p>Goodreads review page preview not found</p></iframe>
 	<p><strong>Link:</strong> <a href="<%= @link %>"><%= @link %></a></p>
 </div>
 
-<%= form_for @book, :url => {:controller => 'books', :action => 'create', :id => @book_id }	do |f| %>
-	<%= f.hidden_field :title, :value => @title %>
-	<%= f.hidden_field :author, :value => @author %>
-	<%= f.hidden_field :img_url, :value => @img_url %>
-	<%= f.hidden_field :avg_rating, :value => @reviews %>
-	<%= f.hidden_field :book_id, :value => @book_id %>
-	<%= f.hidden_field :link, :value => @book_id %>
-	<%= f.submit 'save', :class => "btn btn-primary btn-xs" %>
+<div class="details_form">
+	<%= form_for @book, :url => {:controller => 'books', :action => 'create', :id => @book_id }	do |f| %>
+		<%= f.hidden_field :title, :value => @title %>
+		<%= f.hidden_field :author, :value => @author %>
+		<%= f.hidden_field :img_url, :value => @img_url %>
+		<%= f.hidden_field :avg_rating, :value => @reviews %>
+		<%= f.hidden_field :book_id, :value => @book_id %>
+		<%= f.hidden_field :link, :value => @book_id %>
+		<%= f.submit 'save', :class => "btn btn-primary btn-s" %>
 
-<% end %>
+	<% end %>
+	<br>
 
+	<%= link_to "View Saved Books", books_path %>
+	<br>
 
-<%= link_to "View all Saved Books", books_path %>
-<br>
-
-<%= link_to "Search Books", books_search_path %>
+	<%= link_to "Search Again", books_search_path %>
+</div>

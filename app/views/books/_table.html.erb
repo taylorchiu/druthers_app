@@ -4,7 +4,7 @@
       <tr>
         <th>Title</th>
         <th>Author</th>
-        <th>Remove from Saved Books</th>
+        <th>Remove</th>
         <th>Add to Poll</th>
     </thead>
     <tbody>
@@ -12,12 +12,12 @@
       <tr>
         <td><%= link_to book[:title], books_details_path(book[:book_id]) %></td>
         <td><%= book[:author] %></td>
-        <td><%= link_to "delete", delete_book_path(book), method: :delete, data: { confirm: "You sure?" } , :class => "btn btn-danger btn-xs" %></td>
+        <td><%= link_to "remove", delete_book_path(book), method: :delete, data: { confirm: "You sure?" } , :class => "btn btn-danger btn-xs" %></td>
         
         <td><%= form_tag('/polls/add') do %>
               <%= hidden_field_tag :book_id, book[:book_id] %>
 
-              <%= submit_tag "Add to Poll", :class => "btn btn-primary btn-xs" %>
+              <%= submit_tag "add to poll", :class => "btn btn-primary btn-xs" %>
             <% end %></td>
         </tr>
         <% end %>

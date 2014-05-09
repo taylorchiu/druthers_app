@@ -1,22 +1,22 @@
 <h1>Your Poll:</h1>
 
 
+<div class="details">
+	<p><div class="details_title"><strong>Name: </strong></div></p><%= @poll.name %><br>
+	<p><div class="details_title"><strong>Opens On: </strong></div></p><%= @poll.start_date %><br>
+	<p><div class="details_title"><strong>Closes On: </strong></div></p><%= @poll.end_date %><br>
+	<p><div class="details_title"><strong>Unique URL: </strong> </div></p>http://localhost:3000/polls/<%= @poll.url %><br>
+	<p><div class="details_title"><strong>Nominated Books: </strong> </div></p>
+		<ul><% @poll.books.each do |book|%>
+					<li class="books"><%= book.title %> (<%= book.author %>)<br></li>
+				<% end %>
+		</ul>
+</div>
+<br>
 
-	<strong>Name: </strong><%= @poll.name %><br>
-
-	<strong>Opens On: </strong><%= @poll.start_date %><br>
-
-	<strong>Closes On: </strong><%= @poll.end_date %><br>
-
-	<strong>Unique URL: </strong> http://localhost:3000/polls/<%= @poll.url %><br>
-
-
-<% @poll.books.each do |book|%>
-	<%= book.title %><br>
-<% end %>
-
-<%= link_to "Add more books", books_path %>
+<h2><%= link_to "Add more books", books_path %></h2>
+<h2><%= link_to "Vote Now", new_guest_path %> </h2>
 
 	<%= form_tag("/guests/new", method: "get") do %>
-	  <%= submit_tag("Vote Now") %>
+	  <%= submit_tag "Vote Now", :class => "btn btn-danger btn-s"  %>
 <% end %>

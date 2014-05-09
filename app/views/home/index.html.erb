@@ -2,20 +2,21 @@
 <h2>The book polling app</h2>
 <br>
 
-<% if signed_in? %>
-      <p>
-        <%= link_to "Search Books", books_search_path %>
-      </p>
-      <p><%= link_to "Create a Poll", new_poll_path %>
-      </p>
-      <p>
-        <%= link_to "Sign out", signout_path, method: "delete" %>
-      </p>
-    <% else %>
-      <p>
-        <%= link_to "Sign up", signup_path %>
-      </p>
-      <p>
-        <%= link_to "Sign in", signin_path %>
-      </p>
-    <% end %>
+<div class="buttons_home">
+  <% if signed_in? %>
+    <%= link_to "Search Books", books_search_path, :class => "btn btn-success btn-s"  %>
+    <%= link_to "Create a Poll", new_poll_path, :class => "btn btn-info btn-s"  %>
+    <%= link_to "Sign out", signout_path, method: "delete", :class => "btn btn-primary btn-s" %>
+  <% else %>
+    <p><%= link_to "Sign up", signup_path %></p>
+    <p><%= link_to "Sign in", signin_path %></p>
+  <% end %>
+</div>
+<br>
+
+<div class="home_image">
+<img src="http://vermillionpubliclibrary.org/wp-content/uploads/2014/01/book-heart.jpg"/>
+</div>
+<br>
+
+

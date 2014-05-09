@@ -11,3 +11,108 @@
  *= require_self
  *= require_tree .
  */
+
+div.home_image {
+
+}
+
+div.buttons_home {
+	text-align: right;
+	margin-right: 10px;
+	margin-top: ;
+}
+
+
+ .container {
+	margin: 30px;
+}
+
+.navbar-text a {
+	color: purple;
+}
+
+.details {
+	font-size: 15px;
+}
+
+div.details_title {
+	color: purple;
+	font-size: 20px;
+}
+
+iframe {
+	width: 700px;
+	height: 250px;
+
+}
+
+body {
+	background-image: url(http://ulujain.org/images/lotr/aaj.jpg);
+	background-repeat-x: no-repeat;
+	background-repeat-y: no-repeat;
+}
+
+li.books {
+	font-size: 20px;
+}
+
+iframe {
+	margin-top: 15px;
+}
+
+@media (max-width: 600px) {
+	.home_image {
+		display: none;
+	}
+
+	h1 {
+		text-align: center;
+	}
+
+	h2 {
+		text-align: center;
+	}
+
+	h3 {
+		text-align: center;
+	}
+
+	.buttons_home {
+		text-align: center;
+	}
+
+	.navbar-right {
+		display: none;
+	}
+
+	div.book_image {
+		display: none;
+	}
+
+	iframe {
+		display: none;
+	}
+
+	div.details {
+		font-size: 13px;
+		text-align: center;
+	}
+
+	div.details_title {
+		font-size: 15px;
+		text-align: center;
+	}
+
+	div.details_form {
+		text-align: center;
+	}
+
+	li.books {
+		font-size: 14px;
+	}
+
+	div.coming_soon {
+		display: none;
+	}
+
+}
