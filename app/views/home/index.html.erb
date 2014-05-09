@@ -8,8 +8,7 @@
     <%= link_to "Create a Poll", new_poll_path, :class => "btn btn-info btn-s"  %>
     <%= link_to "Sign out", signout_path, method: "delete", :class => "btn btn-primary btn-s" %>
   <% else %>
-    <p><%= link_to "Sign up", signup_path %></p>
-    <p><%= link_to "Sign in", signin_path %></p>
+    <p><%= link_to "Sign up", signup_path, :class => "btn btn-success btn-s" %> <%= link_to "Sign in", signin_path, :class => "btn btn-info btn-s" %></p>
   <% end %>
 </div>
 <br>
