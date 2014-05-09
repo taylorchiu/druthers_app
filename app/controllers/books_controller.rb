@@ -18,8 +18,12 @@ class BooksController < ApplicationController
 			i = 0
 			while i <= 10 do
 				book = data['GoodreadsResponse']['search']['results']['work'][i]
+				if book == nil
+					return redirect_to(error_path)
+				else
 				@goodreads_data << {title: book['best_book']['title'], author: book['best_book']['author']['name'], book_id: book['best_book']['id'] }
 				i += 1
+				end
 			end
 	end
 
@@ -27,12 +31,22 @@ class BooksController < ApplicationController
 	 	@book_id = params[:id]
   	results = Typhoeus.get("https://www.goodreads.com/book/show/#{@book_id}?format=xml&key=#{ENV['GOODREADS_KEY']}")
   	data = Hash.from_xml(results.response_body)
-  	@title = data['GoodreadsResponse']['book']['title']
-  	@author = data['GoodreadsResponse']['book']['authors']['author'][0]['name']
-  	@img_url = data['GoodreadsResponse']['book']['image_url']
-  	@book_id = data['GoodreadsResponse']['book']['id']
-  	@avg_rating = data['GoodreadsResponse']['book']['average_rating']
-  	@link = 'https://www.goodreads.com/book/title/' + @title.gsub(" ", "+")
+  	@data_main = data['GoodreadsResponse']['book']
+  	@title = @data_main['title']
+  	if @data_main['authors']['author'].is_a?(Hash) == true
+  			@author = @data_main['authors']['author']['name']
+  		else
+  			@author = @data_main['authors']['author'][0]['name']
+  		end
+  	@img_url = @data_main['image_url']
+  		if @img_url.include? "nocover"
+  			@img_url = 'http://s3.amazonaws.com/thumbnails.illustrationsource.com/huge.6.33646.JPG'
+  		else
+  			@img_url = @img_url
+  		end
+  	@book_id = @data_main['id']
+  	@avg_rating = @data_main['average_rating']
+  	@link = @data_main['link']
   	@book = Book.new
   end
 
@@ -62,7 +76,7 @@ class BooksController < ApplicationController
 	end
 
 	def destroy
-		Book.find(params[:id]).destroy
+		Book.find(params[:book_id]).destroy
 		redirect_to books_path
 	end
 
