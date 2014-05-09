@@ -1,0 +1,12 @@
+
+<h1> To join this poll, you must enter your name:</h1>
+
+<%= form_for @guest do |f| %>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+
+	<!-- pass in a poll_id here to be saved to the guest db -->
+	<% f.hidden_field(:guest, poll_id) %>
+
+<%= f.submit  class: "btn btn-primary" %>
+<% end %>

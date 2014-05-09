@@ -10,6 +10,6 @@ class GuestsController < ApplicationController
 
 	private
 		def guest_params
-			params.require(:guest).permit(:name)
+			params.require(:guest).permit(:name, :poll_id)
 		end
 end

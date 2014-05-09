@@ -8,12 +8,15 @@
 
 	<strong>Closes On: </strong><%= @poll.end_date %><br>
 
-	<strong>Unique URL: </strong><%= @poll.url %><br>
+	<strong>Unique URL: </strong> http://localhost:3000/polls/<%= @poll.url %><br>
+
+
+<% @poll.books.each do |book|%>
+	<%= book.title %><br>
+<% end %>
+
+<%= link_to "Add more books", books_path %>
 
 	<%= form_tag("/guests/new", method: "get") do %>
 	  <%= submit_tag("Vote Now") %>
 <% end %>
-
-Need: list of books saved to poll
-
-<h2> NEED: Finish button to generate unique url for guests, add more button (w/ authorization logic to check if current_user is poll.user</h2>

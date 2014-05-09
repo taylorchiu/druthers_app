@@ -1,0 +1,21 @@
+<h1>Druthers</h1>
+<h2>The book polling app</h2>
+<br>
+
+<% if signed_in? %>
+      <p>
+        <%= link_to "Search Books", books_search_path %>
+      </p>
+      <p><%= link_to "Create a Poll", new_poll_path %>
+      </p>
+      <p>
+        <%= link_to "Sign out", signout_path, method: "delete" %>
+      </p>
+    <% else %>
+      <p>
+        <%= link_to "Sign up", signup_path %>
+      </p>
+      <p>
+        <%= link_to "Sign in", signin_path %>
+      </p>
+    <% end %>

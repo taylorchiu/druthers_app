@@ -1,7 +1,7 @@
 class PollsController < ApplicationController
 	
 	def index
-		@polls = Poll.all
+		@polls = current_user.polls.all
 	end
 
 	def show
@@ -16,6 +16,9 @@ class PollsController < ApplicationController
 
 	def create
 		@poll = current_user.polls.create(poll_params)
+		@poll.user_id = current_user.id
+		@poll.url = SecureRandom.urlsafe_base64(8)
+		@poll.save
 		redirect_to poll_path(@poll)
 	end
 
@@ -29,9 +32,18 @@ class PollsController < ApplicationController
 		redirect_to poll_path(@poll)
 	end
 
+	def add
+		@poll = Poll.find_by(user_id: current_user.id)
+		# binding.pry
+		@book = Book.find_by_book_id(params[:book_id])
+		# binding.pry
+		@poll.books << @book
+		redirect_to poll_path(@poll.id)
+	end
+
 	def destroy
 		Poll.find(params[:id]).destroy
-		redirect_to root_path
+		redirect_to polls_path
 	end
 
 	private

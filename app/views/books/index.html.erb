@@ -1,10 +1,10 @@
 <h1>My Saved Books</h1>
 <br>
 
+<%= render "/books/table" %>
 
 
-
-<%= link_to "delete", @book, method: :delete, data: { confirm: "You sure?" } , :class => "btn btn-danger btn-xs" %>
 <br>
-
-<%= link_to "Create a Poll!", new_poll_path %>
+<h2><%= link_to "Search Books", books_search_path %></h2>
+<h2><%= link_to "Create a Poll!", new_poll_path %></h2>
+<h2><%= link_to "View all Polls", polls_path %></h2>

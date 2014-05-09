@@ -14,11 +14,12 @@ Druthers::Application.routes.draw do
   get '/books', to: 'books#index', as: 'books'
 
   get 'books/new', to: 'books#new', as: 'new_book'
+  post 'books/:id', to: 'books#update', as: 'update_book'
   delete 'books/:id', to: 'books#destroy', as: 'delete_book'
 
 
   resources :users, except: [:index, :show]
-  resources :polls
+  resources :polls, except: [:delete]
   resources :guests, only: [:new, :create]
 
   get '/signup', to: 'users#new'
@@ -27,6 +28,8 @@ Druthers::Application.routes.draw do
   post '/signin', to: 'sessions#create'
 
   get '/polls/link/:link', to: 'polls#link', as: 'link'
+  post '/polls/add', to: 'polls#add'
+  delete '/polls/:id', to: 'polls#delete', as: 'delete_poll'
 
   get '/error', to: 'home#error', as: 'error'
 end

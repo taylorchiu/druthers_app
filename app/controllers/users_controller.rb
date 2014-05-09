@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = "Welcome to Druthers, the Book Voting App!"
       sign_in @user
-      redirect_to polls_search_path
+      redirect_to books_search_path
     else
       flash[:error] = "Failed to create account.  Try again."
       redirect_to new_user_path

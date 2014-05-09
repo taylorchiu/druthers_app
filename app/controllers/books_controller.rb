@@ -11,7 +11,7 @@ class BooksController < ApplicationController
 		else
 			@search = params[:title]
 		end
-		search_terms = @search.gsub(" ", "%20")
+		@search = @search.gsub(" ", "%20")
 		results = Typhoeus.get("https://www.goodreads.com/search.xml?key=#{ENV['GOODREADS_KEY']}&q=#{@search}")
 		data = Hash.from_xml(results.response_body)
 		@goodreads_data = []
@@ -46,18 +46,37 @@ class BooksController < ApplicationController
 	end
 
 	def create
-		@book = Book.new
-		@book.update(book_params)
+		@book = Book.create(book_params)
+		@favorite = Favorite.new
+		@favorite.book_id = @book.id
+		@favorite.user_id = current_user.id
+		@favorite.save
 		redirect_to books_path
+	end
+
+	def update
+		@book = Book.find(params[:id])
+		# respond_to do |format|
+		# if @book.update_attributes(params[:poll_id])
+
 	end
 
 	def destroy
 		Book.find(params[:id]).destroy
-		redirect_to root_path
+		redirect_to books_path
 	end
+
+	def index
+		@savedbooks = []
+		user_favorites = Favorite.find(:all, :conditions => [ "user_id = ? ", current_user.id])
+		user_favorites.each do |fave|
+			@savedbooks << Book.find(fave[:book_id])
+		end
+	end
+
 
 	private
 		def book_params
-			params.require(:book).permit(:title, :author, :img_url, :book_id, :reviews)
+			params.require(:book).permit(:title, :author, :img_url, :book_id, :avg_rating, :link)
 		end
 end
