@@ -17,7 +17,7 @@ class PollsController < ApplicationController
 		@poll.user_id = current_user.id
 		@poll.url = SecureRandom.urlsafe_base64(8)
 		@poll.save
-		redirect_to poll_path(@poll)
+		redirect_to poll_path(@poll.url)
 	end
 
 	def edit
@@ -41,15 +41,15 @@ class PollsController < ApplicationController
 		redirect_to poll_path(@poll.url)
 	end
 
-	def destroy
-		Poll.find(params[:id]).destroy
+	def delete
+		Poll.find_by_url(params[:url]).destroy
 		redirect_to polls_path
 	end
 
 	private
 		def poll_params
 			# did not permit :url bc that shouldn't be changeable by the user
-			params.require(:poll).permit(:name, :start_date, :end_date, :book_list, :winning_book)
+			params.require(:poll).permit(:name, :start_date, :end_date, :url, :book_list, :winning_book)
 		end
 
 end

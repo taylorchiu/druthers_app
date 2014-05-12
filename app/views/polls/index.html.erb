@@ -17,7 +17,7 @@
 				  <td><%= link_to poll.name, poll_path(poll.url) %></td>
 				  <td><%= poll[:start_date] %></td>
 				  <td><%= poll[:end_date] %></td>
-				  <td><%= link_to "delete", delete_poll_path(poll), method: :delete, data: { confirm: "You sure?" } , :class => "btn btn-danger btn-xs" %></td>
+				  <td><%= link_to "delete", delete_poll_path(poll.url), method: :delete, data: { confirm: "You sure?" } , :class => "btn btn-danger btn-xs" %></td>
 				</tr>
 				<% end %>
 
