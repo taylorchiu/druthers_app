@@ -15,7 +15,7 @@
         <td><%= link_to "remove", delete_book_path(book), method: :delete, data: { confirm: "You sure?" } , :class => "btn btn-danger btn-xs" %></td>
         
         <td><%= form_tag('/polls/add') do %>
-              <%= hidden_field_tag :book_id, book[:book_id] %>
+              <%= hidden_field_tag :book_id, book.id %>
 
               <%= submit_tag "add to poll", :class => "btn btn-primary btn-xs" %>
             <% end %></td>

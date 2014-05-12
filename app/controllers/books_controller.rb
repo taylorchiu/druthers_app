@@ -75,17 +75,17 @@ class BooksController < ApplicationController
 
 	end
 
-	def destroy
-		Book.find(params[:book_id]).destroy
-		redirect_to books_path
-	end
-
 	def index
 		@savedbooks = []
 		user_favorites = Favorite.find(:all, :conditions => [ "user_id = ? ", current_user.id])
 		user_favorites.each do |fave|
 			@savedbooks << Book.find(fave[:book_id])
 		end
+	end
+
+		def destroy
+		Favorite.find(params[:id]).destroy
+		redirect_to books_path
 	end
 
 

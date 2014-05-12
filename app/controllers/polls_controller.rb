@@ -5,9 +5,7 @@ class PollsController < ApplicationController
 	end
 
 	def show
-		@poll = Poll.find(params[:id])
-		# is this correct if the user is going to navigate directly to the show page
-		# using a unique URL?
+		@poll = Poll.find_by_url(params[:url])
 	end
 
 	def new
@@ -35,10 +33,12 @@ class PollsController < ApplicationController
 	def add
 		@poll = Poll.find_by(user_id: current_user.id)
 		# binding.pry
-		@book = Book.find_by_book_id(params[:book_id])
-		# binding.pry
+		@favorite = Favorite.find_by_book_id(params[:book_id])
+
+	# @favorite.book_id is a string and it needs to be an integer to find it in Book.all
+		@book = Book.find_by(id: @favorite.book_id)
 		@poll.books << @book
-		redirect_to poll_path(@poll.id)
+		redirect_to poll_path(@poll.url)
 	end
 
 	def destroy

@@ -60,6 +60,14 @@ iframe {
 	margin-top: 15px;
 }
 
+div.guest_login {
+	text-align: center;
+}
+
+div.coming_soon {
+	text-align: center;
+}
+
 @media (max-width: 600px) {
 	.home_image {
 		display: none;
