@@ -5,7 +5,8 @@
 	<p><div class="details_title"><strong>Name: </strong></div></p><%= @poll.name %><br>
 	<p><div class="details_title"><strong>Opens On: </strong></div></p><%= @poll.start_date %><br>
 	<p><div class="details_title"><strong>Closes On: </strong></div></p><%= @poll.end_date %><br>
-	<p><div class="details_title"><strong>Unique URL: </strong> </div></p><a href="http://localhost:3000/polls/<%= @poll.url %>">http://localhost:3000/polls/<%= @poll.url %></a><br>
+	<p><div class="details_title"><strong>Share this Poll: </strong> </div></p><%= link_to request.url, @poll.url %><br>
+
 	<p><div class="details_title"><strong>Nominated Books: </strong> </div></p>
 		<ul><% @poll.books.each do |book|%>
 					<li class="books"><%= book.title %> (<%= book.author %>)<br></li>
