@@ -3,10 +3,10 @@
 FactoryGirl.define do
   factory :book do
     poll nil
-    title "MyString"
-    author "MyString"
-    img_url "MyString"
-    reviews "MyString"
-    book_id "MyString"
+    title 'MyString'
+    author 'MyString'
+    img_url 'MyString'
+    reviews 'MyString'
+    book_id 'MyString'
   end
 end

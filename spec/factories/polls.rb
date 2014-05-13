@@ -2,12 +2,12 @@
 
 FactoryGirl.define do
   factory :poll do
-    name "MyString"
-    url "MyString"
-    start_date "MyString"
-    end_date "MyString"
-    book_list "MyString"
-    winning_book "MyString"
+    name 'MyString'
+    url 'MyString'
+    start_date 'MyString'
+    end_date 'MyString'
+    book_list 'MyString'
+    winning_book 'MyString'
     user nil
   end
 end

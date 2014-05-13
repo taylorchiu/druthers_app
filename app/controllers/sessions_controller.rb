@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-
   def new
   end
 
@@ -11,7 +10,7 @@ class SessionsController < ApplicationController
       redirect_to books_search_path
     else
       # Create an error message and re-render the signin form.
-      flash[:error]='Invalid email address/password combination'
+      flash[:error] = 'Invalid email address/password combination'
       redirect_to signin_path
     end
   end
@@ -20,5 +19,4 @@ class SessionsController < ApplicationController
     sign_out
     redirect_to root_path
   end
-
 end
