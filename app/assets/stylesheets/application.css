@@ -12,14 +12,58 @@
  *= require_tree .
  */
 
-div.home_image {
+div.main {
+	text-align: center;
+	z-index: 5;
+	border: 5px solid black;
+	margin: 15%;
+	border-radius: 20px;
+	position: relative;
+	background-color: #108a93;
+}
 
+/*div.maintext {
+	 how to make this part solid but the background teal opaque??
+}*/
+
+#bg {
+	position: fixed;
+	top: 0;
+	left: 0;
+	min-width: 100%;
+	min-height: 100%;
+	z-index: -5;
+	position: relative;
+}
+
+#background_image {
+	position: absolute; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  margin: auto; 
+  min-width: 50%;
+  min-height: 50%;
+  z-index: 0;
+}
+
+div.background_image {
+	background-image: url("/assets/wallpaperbook.jpg" alt="wallpaper") no-repeat center center fixed;
+	-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 div.buttons_home {
-	text-align: right;
+	text-align: center;
 	margin-right: 10px;
-	margin-top: ;
+}
+
+div.buttons_home p {
+	padding: 10px;
+	padding-right: 5px;
 }
 
 
@@ -66,9 +110,10 @@ div.coming_soon {
 }
 
 @media (max-width: 600px) {
-	.home_image {
-		display: none;
-	}
+	img.bg {
+    left: 50%;
+    margin-left: -512px;   /* 50% */
+  }
 
 	h1 {
 		text-align: center;

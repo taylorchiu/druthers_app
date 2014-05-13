@@ -1,21 +1,24 @@
-<h1>Druthers</h1>
-<h2>The book polling app</h2>
-<br>
+<div class="main">
+	<div class="maintext">
+	<h1>Druthers</h1>
+	<h2>The book polling app</h2>
+	<br>
 
-<div class="buttons_home">
-  <% if signed_in? %>
-    <%= link_to "Search Books", books_search_path, :class => "btn btn-success btn-s"  %>
-    <%= link_to "Create a Poll", new_poll_path, :class => "btn btn-info btn-s"  %>
-    <%= link_to "Sign out", signout_path, method: "delete", :class => "btn btn-primary btn-s" %>
-  <% else %>
-    <p><%= link_to "Sign up", signup_path, :class => "btn btn-success btn-s" %> <%= link_to "Sign in", signin_path, :class => "btn btn-info btn-s" %></p>
-  <% end %>
+	<div class="buttons_home">
+	  <% if signed_in? %>
+	    <%= link_to "Search Books", books_search_path, :class => "btn btn-success btn-s"  %>
+	    <%= link_to "Create a Poll", new_poll_path, :class => "btn btn-info btn-s"  %>
+	    <p><%= link_to "Sign out", signout_path, method: "delete", :class => "btn btn-primary btn-s" %></p>
+	  <% else %>
+	    <p><%= link_to "Sign up", signup_path, :class => "btn btn-success btn-s" %> <%= link_to "Sign in", signin_path, :class => "btn btn-info btn-s" %></p>
+	  <% end %>
+	  </div>
+	</div>
+	<br>
 </div>
-<br>
 
-<div class="home_image">
-<img src="http://vermillionpubliclibrary.org/wp-content/uploads/2014/01/book-heart.jpg"/>
-</div>
-<br>
-
+	<div id="background_image">
+		<img src="/assets/wallpaperbook.jpg" id="bg" alt="wallpaper"/>
+<!-- 	<img src="http://vermillionpubliclibrary.org/wp-content/uploads/2014/01/book-heart.jpg"/> -->
+	</div>
 
