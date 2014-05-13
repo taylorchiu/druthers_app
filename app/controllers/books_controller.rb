@@ -68,6 +68,8 @@ class BooksController < ApplicationController
 		redirect_to books_path
 	end
 
+
+  ## Can Anyone Update a Book?
 	def update
 		@book = Book.find(params[:id])
 		# respond_to do |format|
