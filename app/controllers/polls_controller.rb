@@ -12,7 +12,7 @@ class PollsController < ApplicationController
  	end
 
 	 def create
- 		 @poll = current_user.polls.create(poll_params)
+ 		 @poll = current_user.polls.build(poll_params)
  		 @poll.user_id = current_user.id
  		 @poll.url = SecureRandom.urlsafe_base64(8)
  		 @poll.save

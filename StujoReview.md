@@ -1,22 +1,19 @@
-Code Review for taylor_c
+minCode Review for taylor_c
 ================================================
 Project: druthers_app
 ================================================
 #URLS
 
-* HEROKU: __TODO__: https://druthersbooks.herokuapp.com/
-* GITHUB: __TODO__: https://github.com/taylorchiu/druthers_app
+* HEROKU: https://druthersbooks.herokuapp.com/
+* GITHUB: https://github.com/taylorchiu/druthers_app
 
 # Summary
 
-__TODO__
-
 ![Screenshot](screenshot.png)
-
 
 #Review Rubric
 
-##Implemtation Expecations
+##Implementation Expecations
 
 * Models & Data Relationships
 	* Expectation: At least 2 related models
@@ -65,7 +62,7 @@ __TODO__
 	* Review:Yes
 * Secure
 	* Expectation: Authorization is implemented as well as authentication.  Athorization is achieved through controller methods or helpers that limit resources
-	* Review:Authorization implemented through scoping, Book Update appears unprotected?
+	* Review:--Authorization implemented through scoping, Book Update appears unprotected?
 * Documenting Work
 	* Expectation: Public presentation of work involving key aspects of development process
 	* Review:--Default Readme used
