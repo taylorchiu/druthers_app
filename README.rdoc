@@ -1,28 +1,35 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+== README
 
-Things you may want to cover:
+Welcome to Druthers Books, a book polling app!
+This app was created as my first project for General Assembly's Web Development Immersive, after 4 weeks of instruction. 
 
-* Ruby version
+Druthers allows a user to search the Goodreads API for books by title or author, read Goodreads reviews, save a book to a Favorites list, and create a poll from that list. The poll can be sent via a unique, randomly generated URL to a group of friends, so that they can vote on the next book to read for bookclub.
 
-* System dependencies
+This app was conceived of by a member of my bookclub, to serve as a simple and fast way to decide on our group's reading list. From our research, there was no app that allowed users to simply create a private poll, share it easily, and quickly calculate the results.
+
+Technologies used in the production of this app include:
+
+* Ruby version: ruby 2.1.1p76 (2014-02-24 revision 45161)
+
+* System dependencies: 
+
+I used Ruby on Rails, the Goodreads API, Devise, RSpec, and FactoryGirl. I did not yet know about nested resources, so the routes are all custom and written long-form.
 
 * Configuration
 
-* Database creation
+* Database creation: PostgreSQL
 
 * Database initialization
 
-* How to run the test suite
+* How to run the test suite: tests written in Rspec. Run:
 
-* Services (job queues, cache servers, search engines, etc.)
+rspec spec/controllers/books_controllers_spec.rb
+and
+rspec spec/models/user_spec.rb
+
+More specs to be added soon.
 
 * Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Deployed to Heroku at www.druthersbooks.herokuapp.com
