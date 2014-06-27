@@ -2,9 +2,9 @@
 # if not signed in, redirect to log in page and/or invite to sign up (??)
 
 class HomeController < ApplicationController
-	def index
-	end
+	 def index
+ 	end
 
-	def error
-	end
+	 def error
+ 	end
 end

@@ -1,5 +1,4 @@
 module SessionsHelper
-
   # SessionHelper manages @current_user, that's the user currently
   # signed in.
 
@@ -25,7 +24,7 @@ module SessionsHelper
       # to be able to redirect after successful sign in.
       session[:return_to] = request.url
       # prompt sign in page
-      redirect_to signin_url, notice: "Please sign in."
+      redirect_to signin_url, notice: 'Please sign in.'
     end
   end
 
@@ -36,14 +35,11 @@ module SessionsHelper
   end
 
   # Getter and setter for @current_user
-  def current_user=(user)
-    @current_user = user
-  end
+  attr_writer :current_user
 
   # if current_user doesn't exist, check session cookie for user session
   # If exists, get the user record that belongs to that session.
   def current_user
     @current_user ||= User.find_by(remember_token: cookies[:remember_token])
   end
-
 end
